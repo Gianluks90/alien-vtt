@@ -1,0 +1,15 @@
+<div class="tabs-container" [style.gridTemplateColumns]="'repeat(' + tabs().length + ', 1fr)'" >
+  @for (t of tabs(); track $index) {
+    <button (click)="selectTab($index)" [class.active-tab]="activeTab === $index">
+        {{ t }}
+    </button>
+  }
+</div>
+
+<div class="tab-content-container">
+  @if (activeContent) {
+    <ng-container>
+        <ng-container *ngTemplateOutlet="activeContent.template"></ng-container>
+    </ng-container>
+  }
+</div>

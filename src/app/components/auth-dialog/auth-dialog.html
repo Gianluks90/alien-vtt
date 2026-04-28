@@ -1,0 +1,46 @@
+<app-dialog-wrapper title="Autenticazione">
+    <app-tabs-wrapper [tabs]="tabs" (tabChanged)="onTabChange($event)">
+        <ng-template [tabContent]="0">
+            <form [formGroup]="authForm">
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" formControlName="email" type="email" placeholder="Inserisci la tua email">
+                </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input id="password" formControlName="password" type="password"
+                        placeholder="Inserisci la tua password">
+                </div>
+            </form>
+        </ng-template>
+
+        <ng-template [tabContent]="1">
+            <form [formGroup]="authForm">
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" formControlName="email" type="email" placeholder="Inserisci la tua email">
+                </div>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input id="password" formControlName="password" type="password"
+                        placeholder="Inserisci la tua password">
+                </div>
+                <div class="form-field">
+                    <label for="confirmPassword">Conferma Password</label>
+                    <input id="confirmPassword" formControlName="confirmPassword" type="password"
+                        placeholder="Conferma la tua password">
+                </div>
+            </form>
+        </ng-template>
+    </app-tabs-wrapper>
+
+    <button dialog-action (click)="close()" class="text-btn">
+        <span>Chiudi</span>
+        <span class="material-symbols-rounded">close</span>
+    </button>
+    <button dialog-action (clicked)="submit()"
+        [disabled]="authForm.invalid" class="text-btn">
+        <span>{{ selectedTab === 0 ? 'Accedi' : 'Registrati' }}</span>
+        <span class="material-symbols-rounded">{{ selectedTab === 0 ? 'login' : 'person_add' }}</span>
+    </button>
+</app-dialog-wrapper>

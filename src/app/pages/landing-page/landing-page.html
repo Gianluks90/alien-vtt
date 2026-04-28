@@ -1,0 +1,18 @@
+<div class="landing-page-main-container">
+    <section class="image-section">
+        <img src="./images/backgrounds/Dxb63vFTjq77WqAHDEsC2m.jpg" alt="">
+    </section>
+    <section class="content-section">
+        <div class="logo-icon" [style.background-color]="'var(--accent-color)'"
+            [style.-webkit-mask]="'url(./icons/logo2.svg) no-repeat center / contain'"
+            [style.mask]="'url(./icons/logo2.svg) no-repeat center / contain'"></div>
+        <h1>alterego</h1>
+
+    </section>
+</div>
+
+<button class="auth-btn text-btn" (click)="openAuthDialog()">
+    <span>Entra</span>
+    <span class="material-symbols-rounded">login</span>
+</button>
+<p class="app-version">v. {{vers}}</p>
