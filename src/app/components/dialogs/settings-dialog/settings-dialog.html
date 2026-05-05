@@ -1,0 +1,17 @@
+<app-dialog-wrapper title="Impostazioni">
+    <p>Gestisci alcuni aspetti dell'applicazione, Salva per confermare le eventuali modifiche effettuate.</p>
+     <form [formGroup]="form">
+        <div class="form-field">
+            <label for="nickname">Nickname</label>
+            <input id="nickname" formControlName="nickname" type="text" placeholder="Inserisci testo" />
+        </div>
+     </form>
+    <button dialog-action (click)="save()" class="text-btn">
+        <span>Salva</span>
+        <span class="material-symbols-rounded">save</span>
+    </button>
+    <button dialog-action (click)="close()" class="text-btn">
+        <span>Chiudi</span>
+        <span class="material-symbols-rounded">close</span>
+    </button>
+</app-dialog-wrapper>

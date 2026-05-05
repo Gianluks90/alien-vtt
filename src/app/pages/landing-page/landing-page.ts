@@ -3,8 +3,8 @@ import { APP_VERSION } from "../../consts/app-version";
 import { Dialog } from "@angular/cdk/dialog";
 import { Router } from "@angular/router";
 import { AuthService } from "../../services/auth-service";
-import { AuthDialog } from "../../components/auth-dialog/auth-dialog";
 import { DIALOGS_CONFIG } from "../../consts/dialogsConfig";
+import { AuthDialog } from "../../components/dialogs/auth-dialog/auth-dialog";
 
 @Component({
   selector: "app-landing-page",
@@ -23,6 +23,8 @@ export class LandingPage {
     });
 
     dialogRef.closed.subscribe((result: any) => {
+      console.log(result);
+      
       if (!result?.success) return;
       if (result?.message === 'register') {
         this.authService.createWithEmailAndPassword(result?.credentials).then(() => {

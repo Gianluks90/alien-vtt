@@ -1,0 +1,15 @@
+.mission-editor-main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mission-editor-content {
+    flex-grow: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}

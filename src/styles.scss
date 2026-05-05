@@ -3,7 +3,7 @@
 :root {
     --font-family: "Anta", sans-serif;
     
-    --accent-color: #92E39A;
+    --accent-color: #00ff41;
     --fg-color: #EDEDED;
     --bg-color: #161616;
 
@@ -14,6 +14,8 @@
 
     --overlay-fg-color: whitesmoke;
     --overlay-bg-color: #212121;
+
+    --accent-color-opacity-01: rgba(0, 255, 65, 0.1);
 }
 
 * {
@@ -21,6 +23,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font-family);
+}
+
+*:focus {
+    outline: none;
 }
 
 html,
@@ -59,11 +65,14 @@ html {
     }
 }
 
+a {
+    text-decoration: none;
+}
+
 button.text-btn {
     padding: 8px 24px;
     border: none;
     border: 1px solid var(--accent-color);
-    border-radius: 4px;
     background-color: transparent;
     color: var(--accent-color);
     font-size: 1rem;
@@ -80,6 +89,31 @@ button.text-btn {
     }
 }
 
+button.icon-btn {
+    padding: 8px;
+    border: none;
+    border: 1px solid var(--accent-color);
+    background-color: transparent;
+    color: var(--accent-color);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+    }
+}
+
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 .dialog-backdrop {
     backdrop-filter: blur(4px);
     background-color: rgba(0, 0, 0, 0.4);
@@ -91,13 +125,18 @@ button.text-btn {
     padding: 8px 0;
     gap: 8px;
 
+    &.checkbox-field {
+        flex-direction: row;
+        align-items: center;
+    }
+
     &>label {
         font-size: 14px;
         color: var(--fg-color);
         font-weight: bold;
     }
 
-    &>input {
+    &>input, &>textarea {
         padding: 8px;
         border: 1px solid transparent;
         border-radius: 4px;

@@ -5,5 +5,6 @@ export interface UserData {
     email: string;
     createdAt: Timestamp;
     updatedAt: Timestamp;
-    nickname: string;
+    nickname?: string;
+    role?: string;
 }

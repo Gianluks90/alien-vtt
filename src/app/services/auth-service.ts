@@ -1,7 +1,7 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { Router } from "@angular/router";
 import { createUserWithEmailAndPassword, deleteUser, getAuth, signInWithEmailAndPassword, User, UserCredential } from "firebase/auth";
-import { deleteDoc, doc, setDoc, Timestamp } from "firebase/firestore";
+import { deleteDoc, doc, getDoc, setDoc, Timestamp } from "firebase/firestore";
 import { FirebaseService } from "./firebase-service";
 import { UserData } from "../models/UserData";
 

@@ -1,0 +1,25 @@
+<app-dialog-wrapper title="Nuova mappa">
+    <p>Decidi un titolo e una descrizione per la nuova mappa che stai creando.</p>
+    <form [formGroup]="form">
+        <div class="form-field">
+            <label for="title">Titolo</label>
+            <input id="title" formControlName="title" type="text" placeholder="Inserisci testo">
+        </div>
+        <div class="form-field">
+            <label for="description">Descrizione</label>
+            <textarea id="description" formControlName="description" placeholder="Inserisci testo per un massimo 200 caratteri"></textarea>
+        </div>
+        <div class="form-field checkbox-field">
+            <!-- <label for="isPublic">Pubblica</label> -->
+            <input id="isPublic" formControlName="isPublic" type="checkbox"> Seleziona questa opzione se vuoi che la mappa sia visibile ad altri iscritti.
+        </div>
+    </form>
+    <button dialog-action (click)="save()" class="text-btn" [disabled]="form.invalid">
+        <span>Salva</span>
+        <span class="material-symbols-rounded">save</span>
+    </button>
+    <button dialog-action (click)="close()" class="text-btn">
+        <span>Chiudi</span>
+        <span class="material-symbols-rounded">close</span>
+    </button>
+</app-dialog-wrapper>

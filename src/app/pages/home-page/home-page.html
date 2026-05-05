@@ -1,0 +1,66 @@
+<div class="home-page-main-container">
+    <app-header>
+        @if (isAdmin()) {
+        <a header-action href="https://console.firebase.google.com/project/alien-vtt/overview" target="_blank">
+            <button appSoundClick="click" class="icon-btn">
+                <span class="material-symbols-rounded">local_fire_department</span>
+            </button>
+        </a>
+        }
+        <button header-action appSoundClick="click" class="icon-btn" (click)="openSettingsDialog()">
+            <span class="material-symbols-rounded">settings</span>
+        </button>
+        <button header-action appSoundClick="click" class="icon-btn" (click)="logout()">
+            <span class="material-symbols-rounded">logout</span>
+        </button>
+    </app-header>
+    <div class="home-page-content" [class.not-empty]="maps().length > 0 || missions().length > 0">
+        @if (maps().length > 0 || missions().length > 0) {
+            <div class="menu-container">
+                <section>
+                    <p class="section-title">Mappe</p>
+                    @for(m of maps(); track m.id) {
+                        <div class="section-item" [class.odd-item]="$odd">
+                            <p>{{m.title}}</p>
+                            <div class="item-actions">
+                                <button class="icon-btn" appSoundClick="click">
+                                    <span class="material-symbols-rounded">edit</span>
+                                </button>
+                                <button class="icon-btn" appSoundClick="click" (click)="deleteMap(m.id)">
+                                    <span class="material-symbols-rounded">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    } @empty {
+                        <p class="empty-state">Non hai ancora creato nessuna mappa, clicca sul pulsante "Nuova Mappa" per iniziare!</p>
+                        <button class="text-btn" appSoundClick (click)="openNewMapDialog()">
+                            <span>Crea nuova mappa</span>
+                            <span class="material-symbols-rounded">add</span>
+                        </button>
+                    }
+                </section>
+                <section>
+                    <p class="section-title">Missioni</p>
+                    @for(m of missions(); track m.id) {
+                        <div class="section-item" [class.odd-item]="$odd">
+                            <p>{{m.title}}</p>
+                        </div>
+                    } @empty {
+                        <p class="empty-state">Non hai ancora creato nessuna missione, clicca sul pulsante "Nuova Missione" per iniziare!
+                            Attenzione: occorre almeno una mappa completa per poter creare una missione.</p>
+                        <button class="text-btn" appSoundClick disabled>
+                            <span>Crea nuova missione</span>
+                            <span class="material-symbols-rounded">add</span>
+                        </button>
+                    }
+                </section>
+            </div>
+        } @else {
+            <p class="empty-state">Non hai ancora creato nessuna mappa, clicca sul pulsante "Nuova Mappa" per iniziare!</p>
+            <button class="text-btn" appSoundClick (click)="openNewMapDialog()">
+                <span>Crea nuova mappa</span>
+                <span class="material-symbols-rounded">add</span>
+            </button>
+        }
+    </div>
+</div>

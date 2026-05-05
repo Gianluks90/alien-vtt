@@ -38,7 +38,7 @@
         <span>Chiudi</span>
         <span class="material-symbols-rounded">close</span>
     </button>
-    <button dialog-action (clicked)="submit()"
+    <button dialog-action (click)="submit()"
         [disabled]="authForm.invalid" class="text-btn">
         <span>{{ selectedTab === 0 ? 'Accedi' : 'Registrati' }}</span>
         <span class="material-symbols-rounded">{{ selectedTab === 0 ? 'login' : 'person_add' }}</span>

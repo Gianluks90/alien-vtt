@@ -1,10 +1,11 @@
 import { Component } from "@angular/core";
 import { DialogRef } from "@angular/cdk/dialog";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { TabsWrapper } from "../ui/tabs-wrapper/tabs-wrapper";
-import { DialogWrapper } from "../ui/dialog-wrapper/dialog-wrapper";
-import { TabContent } from "../../directives/tab-content";
-import { passwordMatchValidator } from "../../validators/auth-validators";
+import { TabContent } from "../../../directives/tab-content";
+import { passwordMatchValidator } from "../../../validators/auth-validators";
+import { DialogWrapper } from "../../ui/dialog-wrapper/dialog-wrapper";
+import { TabsWrapper } from "../../ui/tabs-wrapper/tabs-wrapper";
+
 
 interface AuthDialogResult {
   success: boolean;
@@ -45,6 +46,8 @@ export class AuthDialog {
   }
 
   public submit(): void {
+    console.log(this.authForm);
+    
     if (this.authForm.invalid) return;
     const result = this.authForm.value;
     this.dialogRef.close({
