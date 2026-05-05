@@ -1,0 +1,29 @@
+@if (backdrop() && opened()) {
+  <div class="backdrop" (click)="close()"></div>
+}
+
+@if (showTrigger()) {
+  <button
+    class="trigger"
+    [class.icon-btn]="triggerIcon() && !triggerText()"
+    [class.mini-icon-btn]="triggerIcon() && !triggerText()"
+    [class.text-btn]="triggerText()"
+    (click)="toggle()"
+  >
+    @if (triggerIcon()) {
+      <span class="material-symbols-rounded">{{ triggerIcon() }}</span>
+    }
+
+    @if (triggerText()) {
+      <span class="text">{{ triggerText() }}</span>
+    }
+
+    @if (!triggerIcon() && !triggerText()) {
+      <span class="material-symbols-rounded">menu</span>
+    }
+  </button>
+}
+
+<div class="panel" [style.width]="width()">
+  <ng-content></ng-content>
+</div>

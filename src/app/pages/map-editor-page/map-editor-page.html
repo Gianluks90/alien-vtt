@@ -1,1 +1,59 @@
-<p>map-editor-page works!</p>
+<div class="map-editor-main-container">
+    <app-sidenav [opened]="isOpen()" (openedChange)="isOpen.set($event)" position="right" width="320px"
+        triggerIcon="menu" triggerPosition="top-right">
+        <div class="sidenav-content">
+            @let m = mapData();
+            <p class="map-info-label">{{m | mapInfo}}</p>
+            <p class="warning-message">
+                <span class="material-symbols-rounded">info</span> Stato attuale: {{m.status | mapStatus}}
+            </p>
+
+            <p class="p-subtitle">Dettagli</p>
+            <form [formGroup]="form">
+                <div class="form-field">
+                    <input id="map-title" type="text" formControlName="title">
+                </div>
+                <div class="form-field">
+                    <textarea id="map-description" formControlName="description" rows="5" maxlength="200"></textarea>
+                </div>
+            </form>
+            <p class="p-subtitle">Problemi</p>
+            @if(m.layers && m.layers.length <= 0) { <p class="warning-message">
+                <span class="material-symbols-rounded">warning</span> Devi aggiungere almeno un layer alla mappa
+                </p>
+                }
+                @if(!map) {
+                <p class="warning-message">
+                    <span class="material-symbols-rounded">warning</span> Mappa non inizializzata
+                </p>
+                }
+                <div class="actions-container">
+                    <button class="text-btn" (click)="saveMap()" appSoundClick="click">
+                        <span class="material-symbols-rounded">save</span>
+                        Salva
+                    </button><button class="text-btn" disabled appSoundClick="click">
+                        <span class="material-symbols-rounded">check</span>
+                        Completa
+                    </button>
+                </div>
+        </div>
+    </app-sidenav>
+
+    <div id="map"></div>
+    @if(map) {
+        <div class="zoom-control-container">
+            <button class="icon-btn mini-icon-btn" (click)="zoomIn()" appSoundClick="click">
+                <span class="material-symbols-rounded">add</span>
+            </button>
+            <button class="icon-btn mini-icon-btn" (click)="zoomOut()" appSoundClick="click">
+                <span class="material-symbols-rounded">remove</span>
+            </button>
+        </div>
+    }
+</div>
+
+<div class="background-page">
+    <img src="./images/backgrounds/background-grid.svg" alt="">
+</div>
+
+<!-- [img]https://i.imgur.com/F9KFKmI.png[/img] -->

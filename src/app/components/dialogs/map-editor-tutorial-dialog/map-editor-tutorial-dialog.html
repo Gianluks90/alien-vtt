@@ -1,0 +1,27 @@
+<app-dialog-wrapper title="Editor della mappa">
+    <p>Questo è l'editor della mappa. Prima di poter iniziare devi importare (tramite URL valido) almeno un layer
+        (immagine che verrà usata
+        come base) su cui poi potrai andare ad incollare elementi e punti di interesse grazie ai tool presenti in questo
+        editor. L'editor calcolerà automaticamente le dimensioni dell'immagine e quindi i limiti della mappa, se non
+        dovesse succedere sarà necessario
+        farlo manualmente.</p>
+    <hr>
+    <form [formGroup]="form">
+        <div class="form-field">
+            <label for="firstLayer">Etichetta del layer</label>
+            <input id="firstLayer" formControlName="layerLabel" placeholder="Inserisci un'etichetta valida" type="text">
+        </div>
+        <div class="form-field">
+            <label for="firstLayer">URL del layer</label>
+            <input id="firstLayer" formControlName="layerURL" placeholder="Inserisci un URL valido" type="text">
+        </div>
+    </form>
+    <button class="text-btn" dialog-action (click)="back()" appSoundClick="click">
+        <span class="material-symbols-rounded">arrow_forward</span>
+        <span>Esci</span>
+    </button>
+    <button dialog-action (click)="confirm()" class="text-btn" appSoundClick="click" [disabled]="form.invalid">
+        <span class="material-symbols-rounded">add</span>
+        <span>Aggiungi</span>
+    </button>
+</app-dialog-wrapper>

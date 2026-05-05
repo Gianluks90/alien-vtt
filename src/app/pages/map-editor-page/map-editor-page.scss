@@ -1,0 +1,68 @@
+#map {
+    width: 100%;
+    height: 100dvh;
+    background-color: transparent;
+    z-index: 1000;
+}
+
+.background-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &>img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.2;
+    }
+}
+
+.sidenav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    text-transform: uppercase;
+
+    &>.map-info-label {
+        font-weight: normal;
+        color: var(--accent-color);
+        font-size: 0.8em;
+        opacity: 0.5;
+    }
+
+    &>.warning-message {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--error-color);
+        font-size: 0.9em;
+    }
+
+    &>.actions-container {
+        display: grid;
+        grid-template-columns: repeat(2, min-content);
+        gap: 8px;
+        align-self: flex-end;
+    }
+}
+
+.zoom-control-container {
+    position: absolute;
+    bottom: 12px;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    gap: 8px;
+    z-index: 9999;
+}
+
+// https://live.staticflickr.com/65535/55250468537_6d05b63b00_b.jpg
+

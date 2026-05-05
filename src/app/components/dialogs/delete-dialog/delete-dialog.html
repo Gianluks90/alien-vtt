@@ -1,0 +1,11 @@
+<app-dialog-wrapper title="Conferma eliminazione">
+    <p>Sei sicuro di voler eliminare questa mappa? Questa azione è irreversibile.</p>
+    <button dialog-action (click)="confirm()" class="text-btn" appSoundClick="click">
+        <span>Elimina</span>
+        <span class="material-symbols-rounded">delete</span>
+    </button>
+    <button dialog-action (click)="close()" class="text-btn" appSoundClick="click">
+        <span>Annulla</span>
+        <span class="material-symbols-rounded">close</span>
+    </button>
+</app-dialog-wrapper>

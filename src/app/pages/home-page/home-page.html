@@ -21,12 +21,16 @@
                     <p class="section-title">Mappe</p>
                     @for(m of maps(); track m.id) {
                         <div class="section-item" [class.odd-item]="$odd">
-                            <p>{{m.title}}</p>
+                            <!-- <p>{{m.title}}</p> -->
+                             <div class="item-title-container">
+                                <p>{{m.title}}</p>
+                                <p class="map-info">{{ m | mapInfo }}</p>
+                             </div>
                             <div class="item-actions">
-                                <button class="icon-btn" appSoundClick="click">
-                                    <span class="material-symbols-rounded">edit</span>
+                                <button class="icon-btn" appSoundClick="click" (click)="navigateToMap(m)">
+                                    <span class="material-symbols-rounded">{{m.status === 'completed' ? 'play' : 'edit'}}</span>
                                 </button>
-                                <button class="icon-btn" appSoundClick="click" (click)="deleteMap(m.id)">
+                                <button class="icon-btn" appSoundClick="click" (click)="openDeleteDialog(m.id)">
                                     <span class="material-symbols-rounded">delete</span>
                                 </button>
                             </div>

@@ -15,7 +15,7 @@ export const routes: Routes = [
     },
     {
         title: 'Map Editor',
-        path: 'map/:id',
+        path: 'map-editor/:id',
         canActivate: [authGuard],
         loadComponent: () => import('./pages/map-editor-page/map-editor-page').then(m => m.MapEditorPage)
     },

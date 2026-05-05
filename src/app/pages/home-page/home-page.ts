@@ -9,10 +9,13 @@ import { MapData } from "../../models/MapData";
 import { MapEditorService } from "../../services/map-editor-service";
 import { SoundClick } from "../../directives/sound-click";
 import { NewMapDialog } from "../../components/dialogs/new-map-dialog/new-map-dialog";
+import { MapInfoPipe } from "../../pipes/map-info-pipe";
+import { DeleteDialog } from "../../components/dialogs/delete-dialog/delete-dialog";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home-page",
-  imports: [Header, SoundClick],
+  imports: [Header, SoundClick, MapInfoPipe],
   templateUrl: "./home-page.html",
   styleUrl: "./home-page.scss",
 })
@@ -25,7 +28,8 @@ export class HomePage {
     private dialog: Dialog,
     private authService: AuthService,
     private firebaseService: FirebaseService,
-    private mapEditorService: MapEditorService
+    private mapEditorService: MapEditorService,
+    private router: Router
   ) {
     effect(() => {
       const user = this.firebaseService.user();
@@ -72,9 +76,25 @@ export class HomePage {
     })
   }
 
-  public deleteMap(mapId: string): void {
-    this.mapEditorService.deleteMapDataById(mapId).catch((error) => {
-      console.error("Error deleting map:", error);
+  public openDeleteDialog(mapId: string): void {
+    const dialogRef = this.dialog.open(DeleteDialog, {
+      ...DIALOGS_CONFIG,
     });
+
+    dialogRef.closed.subscribe((result: any) => {
+      if (result?.success) {
+        this.mapEditorService.deleteMapDataById(mapId).catch((error) => {
+          console.error("Error deleting map:", error);
+        });
+      }
+    })
+  }
+
+  public navigateToMap(map: MapData): void {
+    if (map.status === 'completed') {
+      // TODO: navigate to map viewer
+    } else {
+      this.router.navigate(['/map-editor', map.id]);
+    }
   }
 }

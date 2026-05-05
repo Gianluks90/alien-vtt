@@ -12,7 +12,7 @@ export class SoundClick {
   @HostListener('click')
 
   onClick(): void {
-    console.log(`[SoundClick] Click su elemento con suono: ${this.soundKey}`);
+    // console.log(`[SoundClick] Click su elemento con suono: ${this.soundKey}`);
     this.soundService.play(this.soundKey);
   }
 }

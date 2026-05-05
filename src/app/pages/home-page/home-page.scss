@@ -64,9 +64,18 @@
             gap: 12px;
             margin: 4px 0;
 
-            &>p {
+            &>.item-title-container {
                 text-transform: uppercase;
                 flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+
+                &>.map-info {
+                    font-size: 0.8rem;
+                    opacity: .5;
+                    color: var(--accent-color);
+                }
             }
 
             &>.item-actions {

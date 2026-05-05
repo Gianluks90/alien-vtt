@@ -3,7 +3,7 @@
     height: 100%;
     background-color: var(--overlay-bg-color);
     color: var(--overlay-fg-color);
-    border-radius: 12px;
+    border: 1px solid var(--accent-color-opacity-01);
 
     display: flex;
     flex-direction: column;

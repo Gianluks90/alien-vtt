@@ -69,6 +69,11 @@ a {
     text-decoration: none;
 }
 
+hr {
+    color: var(--accent-color-opacity-01);
+    margin: 12px 0;
+}
+
 button.text-btn {
     padding: 8px 24px;
     border: none;
@@ -107,6 +112,10 @@ button.icon-btn {
         background-color: var(--accent-color);
         color: var(--bg-color);
     }
+}
+
+button.mini-icon-btn {
+    padding: 4px;
 }
 
 button:disabled {
@@ -148,4 +157,9 @@ button:disabled {
             border-color: var(--btn-bg-color);
         }
     }
+}
+
+p.p-subtitle {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
 }

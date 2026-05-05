@@ -1,10 +1,10 @@
 import { effect, inject, Injectable, signal } from "@angular/core";
 import { doc, Firestore, getDoc, getFirestore, onSnapshot } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { FIREBASE_CONFIG } from "../consts/firebase-config";
 import { getAuth } from "firebase/auth";
 import { UserData } from "../models/UserData";
 import { Router } from "@angular/router";
+import { FIREBASE_CONFIG } from "../environment/firebase-config";
 
 @Injectable({
   providedIn: "root",
@@ -21,7 +21,6 @@ export class FirebaseService {
     getAuth(app).onAuthStateChanged(async user => {
       if (user) {
         await this.getUserSnapshotByUid(user.uid);
-        this.router.navigate(['/home']);
       } else {
         this.user.set(null);
       }
